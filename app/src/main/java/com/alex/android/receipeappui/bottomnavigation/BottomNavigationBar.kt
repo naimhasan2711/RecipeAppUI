@@ -37,7 +37,8 @@ fun BottomNavigationBar() {
 
         bottomBar = {
             NavigationBar(
-                modifier = Modifier.background(TopBarColor)
+                modifier = Modifier.background(TopBarColor),
+                containerColor = TopBarColor
             ) {
                 BottomNavigationItem().bottomNavigationItems().forEachIndexed { _, navigationItem ->
                     NavigationBarItem(
