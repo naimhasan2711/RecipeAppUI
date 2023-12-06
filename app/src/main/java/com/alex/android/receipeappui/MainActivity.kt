@@ -12,6 +12,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.alex.android.receipeappui.bottomnavigation.BottomNavigationBar
 import com.alex.android.receipeappui.ui.theme.ReceipeAppUITheme
+import com.alex.android.receipeappui.ui.theme.TopBarColor
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

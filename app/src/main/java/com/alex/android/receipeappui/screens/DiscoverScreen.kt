@@ -10,8 +10,6 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentWidth
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.outlined.Settings
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Surface
@@ -20,11 +18,13 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.alex.android.receipeappui.R
 import com.alex.android.receipeappui.Screens
 import com.alex.android.receipeappui.ui.theme.ReceipeAppUITheme
 import com.alex.android.receipeappui.ui.theme.TopBarColor
@@ -80,19 +80,19 @@ fun RowWithCenteredTextAndIconButton(navController: NavController) {
             modifier = Modifier
                 .weight(1f)
                 .wrapContentWidth(Alignment.CenterHorizontally),
-            style = TextStyle(color = Color.Black, fontSize = 24.sp,fontWeight = FontWeight.Bold )
+            style = TextStyle(color = Color.Black, fontSize = 24.sp, fontWeight = FontWeight.Bold)
         )
 
         IconButton(
             onClick = {
-                navController.navigate(Screens.Search.route)
+                navController.navigate(Screens.Settings.route)
             },
             modifier = Modifier
                 .size(48.dp)
                 .padding(8.dp)
         ) {
             Icon(
-                imageVector = Icons.Outlined.Settings,
+                painter = painterResource(id = R.drawable.setting),
                 contentDescription = "Send"
             )
         }

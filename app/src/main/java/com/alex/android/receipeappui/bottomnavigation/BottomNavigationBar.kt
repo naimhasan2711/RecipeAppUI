@@ -12,7 +12,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
@@ -23,6 +22,8 @@ import com.alex.android.receipeappui.Screens
 import com.alex.android.receipeappui.screens.DiscoverScreen
 import com.alex.android.receipeappui.screens.MyRecipeScreen
 import com.alex.android.receipeappui.screens.SearchScreen
+import com.alex.android.receipeappui.screens.SettingScreen
+import com.alex.android.receipeappui.ui.theme.TopBarColor
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -32,10 +33,12 @@ fun BottomNavigationBar() {
     val currentDestination = navBackStackEntry?.destination
     Scaffold(
         modifier = Modifier
-            .fillMaxSize()
-            .background(Color.Red),
+            .fillMaxSize(),
+
         bottomBar = {
-            NavigationBar {
+            NavigationBar(
+                modifier = Modifier.background(TopBarColor)
+            ) {
                 BottomNavigationItem().bottomNavigationItems().forEachIndexed { _, navigationItem ->
                     NavigationBarItem(
                         selected = navigationItem.route == currentDestination?.route,
@@ -79,6 +82,12 @@ fun BottomNavigationBar() {
             }
             composable(Screens.MyRecipe.route) {
                 MyRecipeScreen(
+                    navController
+                )
+            }
+
+            composable(Screens.Settings.route) {
+                SettingScreen(
                     navController
                 )
             }
