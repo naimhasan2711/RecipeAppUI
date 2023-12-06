@@ -1,32 +1,30 @@
 package com.alex.android.receipeappui.bottomnavigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.annotation.DrawableRes
+import com.alex.android.receipeappui.R
 import com.alex.android.receipeappui.Screens
 
 data class BottomNavigationItem(
     val label : String = "",
-    val icon : ImageVector = Icons.Filled.Home,
+    @DrawableRes
+    val icon : Int = R.drawable.discovery,
     val route : String = ""
 ) {
     fun bottomNavigationItems() : List<BottomNavigationItem> {
         return listOf(
             BottomNavigationItem(
                 label = "Discover",
-                icon = Icons.Filled.Home,
+                icon = R.drawable.discovery,
                 route = Screens.Discover.route
             ),
             BottomNavigationItem(
                 label = "Search",
-                icon = Icons.Filled.Search,
+                icon = R.drawable.search,
                 route = Screens.Search.route
             ),
             BottomNavigationItem(
                 label = "My Recipes",
-                icon = Icons.Filled.AccountCircle,
+                icon = R.drawable.book,
                 route = Screens.MyRecipe.route
             ),
         )

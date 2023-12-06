@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -30,7 +31,9 @@ fun BottomNavigationBar() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentDestination = navBackStackEntry?.destination
     Scaffold(
-        modifier = Modifier.fillMaxSize().background(Color.Red),
+        modifier = Modifier
+            .fillMaxSize()
+            .background(Color.Red),
         bottomBar = {
             NavigationBar {
                 BottomNavigationItem().bottomNavigationItems().forEachIndexed { _, navigationItem ->
@@ -41,7 +44,7 @@ fun BottomNavigationBar() {
                         },
                         icon = {
                             Icon(
-                                navigationItem.icon,
+                                painterResource(id = navigationItem.icon),
                                 contentDescription = navigationItem.label
                             )
                         },
@@ -58,11 +61,12 @@ fun BottomNavigationBar() {
                 }
             }
         }
-    ) {paddingValues ->
+    ) { paddingValues ->
         NavHost(
             navController = navController,
             startDestination = Screens.Discover.route,
-            modifier = Modifier.padding(paddingValues = paddingValues)) {
+            modifier = Modifier.padding(paddingValues = paddingValues)
+        ) {
             composable(Screens.Discover.route) {
                 DiscoverScreen(
                     navController
