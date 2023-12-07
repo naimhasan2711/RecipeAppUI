@@ -70,38 +70,7 @@ fun DiscoverScreen(navController: NavController) {
                     }
                 }
                 Spacer(modifier = Modifier.height(12.dp))
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(30.dp),
-                    horizontalArrangement = Arrangement.SpaceBetween
-                ) {
-                    Text(
-                        text = "Featured Recipes",
-                        modifier = Modifier
-                            .weight(1f)
-                            .padding(start = 8.dp),
-                        textAlign = TextAlign.Start,
-                        style = TextStyle(
-                            color = Color.Black,
-                            fontSize = 22.sp,
-                            fontWeight = FontWeight.Normal
-                        )
-                    )
-                    Text(
-                        text = "View All",
-                        modifier = Modifier
-                            .weight(1f)
-                            .padding(end = 16.dp),
-                        textAlign = TextAlign.End,
-                        style = TextStyle(
-                            color = ViewAllTextColor,
-                            fontSize = 14.sp,
-                            fontWeight = FontWeight.Normal
-                        )
-                    )
-                }
-
+                RowWithTwoText(firstText = "Featured Recipes", secondText = "View All")
             }
         }
     }
@@ -184,5 +153,40 @@ fun CardWithImageAndTitle(
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
         }
+    }
+}
+
+@Composable
+fun RowWithTwoText(firstText:String, secondText:String) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(30.dp),
+        horizontalArrangement = Arrangement.SpaceBetween
+    ) {
+        Text(
+            text = firstText,
+            modifier = Modifier
+                .weight(1f)
+                .padding(start = 8.dp),
+            textAlign = TextAlign.Start,
+            style = TextStyle(
+                color = Color.Black,
+                fontSize = 22.sp,
+                fontWeight = FontWeight.Normal
+            )
+        )
+        Text(
+            text = secondText,
+            modifier = Modifier
+                .weight(1f)
+                .padding(end = 16.dp),
+            textAlign = TextAlign.End,
+            style = TextStyle(
+                color = ViewAllTextColor,
+                fontSize = 14.sp,
+                fontWeight = FontWeight.Normal
+            )
+        )
     }
 }
