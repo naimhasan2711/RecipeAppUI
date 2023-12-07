@@ -55,7 +55,7 @@ fun DiscoverScreen(navController: NavController) {
                     .background(MaterialTheme.colorScheme.background),
             ) {
                 RowWithCenteredTextAndIconButton(navController)
-                Spacer(modifier = Modifier.height(16.dp))
+                Spacer(modifier = Modifier.height(12.dp))
                 LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     items(1) {
                         CardWithImageAndTitle(
@@ -114,10 +114,10 @@ fun CardWithImageAndTitle(
 ) {
     Card(
         modifier = Modifier
-            .height(140.dp)
-            .width(140.dp)
-            .padding(12.dp)
-            .clip(RoundedCornerShape(45.dp))
+            .height(120.dp)
+            .width(120.dp)
+            .padding(10.dp)
+            .clip(RoundedCornerShape(40.dp))
             .background(MaterialTheme.colorScheme.onBackground),
         colors = CardDefaults.cardColors(
             containerColor = SmallCardBgcolor, //Card background color
@@ -135,8 +135,8 @@ fun CardWithImageAndTitle(
                 painter = painter,
                 contentDescription = null,
                 modifier = Modifier
-                    .height(50.dp)
-                    .width(50.dp)
+                    .height(30.dp)
+                    .width(30.dp)
                     .aspectRatio(1.2f),
                 alignment = Alignment.Center
 
