@@ -146,7 +146,7 @@ fun DiscoverScreen(navController: NavController) {
                         items(1) {
                             CardWithImageAndRows(
                                 painterResource(id = R.drawable.media5),
-                                "CChorizo mozzarealla\ngnocchi bake",
+                                "Iced Dried Cherry\nBiscuits",
                                 "10 mins"
                             )
 
