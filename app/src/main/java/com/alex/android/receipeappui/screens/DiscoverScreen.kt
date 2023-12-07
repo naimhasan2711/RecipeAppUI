@@ -2,6 +2,7 @@ package com.alex.android.receipeappui.screens
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -54,8 +55,8 @@ fun DiscoverScreen(navController: NavController) {
                     .background(MaterialTheme.colorScheme.background),
             ) {
                 RowWithCenteredTextAndIconButton(navController)
-                Spacer(modifier = Modifier.height(20.dp))
-                LazyRow {
+                Spacer(modifier = Modifier.height(16.dp))
+                LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     items(1) {
                         CardWithImageAndTitle(
                             "American", painterResource(id = R.drawable.hamburger_)
@@ -79,6 +80,8 @@ fun RowWithCenteredTextAndIconButton(navController: NavController) {
         modifier = Modifier
             .fillMaxWidth()
             .height(70.dp)
+            .border(2.dp, color = Color.Gray, shape = RoundedCornerShape(0.dp))
+            .padding(2.dp)
             .background(TopBarColor),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
@@ -111,9 +114,9 @@ fun CardWithImageAndTitle(
 ) {
     Card(
         modifier = Modifier
-            .height(150.dp)
-            .width(150.dp)
-            .padding(16.dp)
+            .height(140.dp)
+            .width(140.dp)
+            .padding(12.dp)
             .clip(RoundedCornerShape(45.dp))
             .background(MaterialTheme.colorScheme.onBackground),
         colors = CardDefaults.cardColors(
