@@ -33,14 +33,16 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.alex.android.receipeappui.R
 import com.alex.android.receipeappui.Screens
 import com.alex.android.receipeappui.ui.theme.ReceipeAppUITheme
-import com.alex.android.receipeappui.ui.theme.SmallCardBgcolor
+import com.alex.android.receipeappui.ui.theme.SmallCardBgColor
 import com.alex.android.receipeappui.ui.theme.TopBarColor
+import com.alex.android.receipeappui.ui.theme.ViewAllTextColor
 
 
 @Composable
@@ -66,6 +68,38 @@ fun DiscoverScreen(navController: NavController) {
                         CardWithImageAndTitle("Chinese", painterResource(id = R.drawable.sushi_))
                         CardWithImageAndTitle("Spanish", painterResource(id = R.drawable.food_))
                     }
+                }
+                Spacer(modifier = Modifier.height(12.dp))
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(30.dp),
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Text(
+                        text = "Featured Recipes",
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(start = 8.dp),
+                        textAlign = TextAlign.Start,
+                        style = TextStyle(
+                            color = Color.Black,
+                            fontSize = 22.sp,
+                            fontWeight = FontWeight.Normal
+                        )
+                    )
+                    Text(
+                        text = "View All",
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(end = 16.dp),
+                        textAlign = TextAlign.End,
+                        style = TextStyle(
+                            color = ViewAllTextColor,
+                            fontSize = 14.sp,
+                            fontWeight = FontWeight.Normal
+                        )
+                    )
                 }
 
             }
@@ -120,7 +154,7 @@ fun CardWithImageAndTitle(
             .clip(RoundedCornerShape(40.dp))
             .background(MaterialTheme.colorScheme.onBackground),
         colors = CardDefaults.cardColors(
-            containerColor = SmallCardBgcolor, //Card background color
+            containerColor = SmallCardBgColor, //Card background color
             contentColor = Color.Black  //Card content color,e.g.text
         )
     ) {
