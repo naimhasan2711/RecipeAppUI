@@ -17,7 +17,9 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -60,70 +62,103 @@ fun DiscoverScreen(navController: NavController) {
                     .background(MaterialTheme.colorScheme.background),
             ) {
                 RowWithCenteredTextAndIconButton(navController)
-                Spacer(modifier = Modifier.height(12.dp))
-                LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    items(1) {
-                        CardWithImageAndTitle(
-                            "American", painterResource(id = R.drawable.hamburger_)
-                        )
-                        CardWithImageAndTitle("Spanish", painterResource(id = R.drawable.food_))
-                        CardWithImageAndTitle("Italian", painterResource(id = R.drawable.pizza_))
-                        CardWithImageAndTitle("Chinese", painterResource(id = R.drawable.sushi_))
-                        CardWithImageAndTitle("Spanish", painterResource(id = R.drawable.food_))
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .verticalScroll(rememberScrollState()),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ){
+                    Spacer(modifier = Modifier.height(12.dp))
+                    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                        items(1) {
+                            CardWithImageAndTitle(
+                                "American", painterResource(id = R.drawable.hamburger_)
+                            )
+                            CardWithImageAndTitle("Spanish", painterResource(id = R.drawable.food_))
+                            CardWithImageAndTitle("Italian", painterResource(id = R.drawable.pizza_))
+                            CardWithImageAndTitle("Chinese", painterResource(id = R.drawable.sushi_))
+                            CardWithImageAndTitle("Spanish", painterResource(id = R.drawable.food_))
+                        }
                     }
-                }
-                Spacer(modifier = Modifier.height(12.dp))
-                RowWithTwoText(firstText = "Featured Recipes", secondText = "View All")
-                Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
+                    RowWithTwoText(firstText = "Featured Recipes", secondText = "View All")
+                    Spacer(modifier = Modifier.height(4.dp))
 
-                LazyRow(
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    items(1) {
-                        CardWithImageAndRows(
-                            painterResource(id = R.drawable.media),
-                            "Chicken Zoodle\nSoup in a Jar",
-                            "10 mins"
-                        )
+                    LazyRow(
+                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        items(1) {
+                            CardWithImageAndRows(
+                                painterResource(id = R.drawable.media),
+                                "Chicken Zoodle\nSoup in a Jar",
+                                "10 mins"
+                            )
 
-                        CardWithImageAndRows(
-                            painterResource(id = R.drawable.media3),
-                            "Iced Dried Cherry\nBiscuits",
-                            "25+15 mins"
-                        )
-                        CardWithImageAndRows(
-                            painterResource(id = R.drawable.media2),
-                            "Grilled Pizza\n",
-                            "50 + 12 mins"
-                        )
+                            CardWithImageAndRows(
+                                painterResource(id = R.drawable.media3),
+                                "Iced Dried Cherry\nBiscuits",
+                                "25+15 mins"
+                            )
+                            CardWithImageAndRows(
+                                painterResource(id = R.drawable.media2),
+                                "Grilled Pizza\n",
+                                "50 + 12 mins"
+                            )
+                        }
                     }
-                }
 
-                Spacer(modifier = Modifier.height(4.dp))
-                RowWithTwoText(firstText = "Trending Recipes", secondText = "View All")
-                Spacer(modifier = Modifier.height(4.dp))
-                LazyRow(
-                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                ) {
-                    items(1) {
-                        CardWithImageAndRows(
-                            painterResource(id = R.drawable.media5),
-                            "Chicken Zoodle\nSoup in a Jar",
-                            "10 mins"
-                        )
+                    Spacer(modifier = Modifier.height(4.dp))
+                    RowWithTwoText(firstText = "Trending Recipes", secondText = "View All")
+                    Spacer(modifier = Modifier.height(4.dp))
+                    LazyRow(
+                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        items(1) {
+                            CardWithImageAndRows(
+                                painterResource(id = R.drawable.media5),
+                                "Chicken Zoodle\nSoup in a Jar",
+                                "10 mins"
+                            )
 
-                        CardWithImageAndRows(
-                            painterResource(id = R.drawable.media4),
-                            "Iced Dried Cherry\nBiscuits",
-                            "25+15 mins"
-                        )
-                        CardWithImageAndRows(
-                            painterResource(id = R.drawable.media3),
-                            "Grilled Pizza\n",
-                            "50 + 12 mins"
-                        )
+                            CardWithImageAndRows(
+                                painterResource(id = R.drawable.media4),
+                                "Iced Dried Cherry\nBiscuits",
+                                "25+15 mins"
+                            )
+                            CardWithImageAndRows(
+                                painterResource(id = R.drawable.media3),
+                                "Grilled Pizza\n",
+                                "50 + 12 mins"
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(4.dp))
+                    RowWithTwoText(firstText = "Easy Recipes", secondText = "View All")
+                    Spacer(modifier = Modifier.height(4.dp))
+                    LazyRow(
+                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                    ) {
+                        items(1) {
+                            CardWithImageAndRows(
+                                painterResource(id = R.drawable.media5),
+                                "CChorizo mozzarealla\ngnocchi bake",
+                                "10 mins"
+                            )
+
+                            CardWithImageAndRows(
+                                painterResource(id = R.drawable.media2),
+                                "Pork tenderion\nHoney mustard",
+                                "45 + 60 mins"
+                            )
+                            CardWithImageAndRows(
+                                painterResource(id = R.drawable.media),
+                                "Smoky sausage &\nsquash traybake",
+                                "50 + 12 mins"
+                            )
+                        }
                     }
                 }
             }
@@ -250,8 +285,8 @@ fun RowWithTwoText(firstText: String, secondText: String) {
 fun CardWithImageAndRows(painter: Painter, title: String, subtitle: String) {
     Card(
         modifier = Modifier
-            .height(220.dp)
-            .width(220.dp)
+            .height(200.dp)
+            .width(200.dp)
             .padding(start = 4.dp, end = 8.dp)
             .clip(RoundedCornerShape(28.dp))
             .background(MaterialTheme.colorScheme.primary)
@@ -267,7 +302,7 @@ fun CardWithImageAndRows(painter: Painter, title: String, subtitle: String) {
                 contentDescription = null,
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp),
+                    .height(90.dp),
                 contentScale = ContentScale.Crop
             )
             Spacer(modifier = Modifier.height(8.dp))
