@@ -1,5 +1,6 @@
 package com.alex.android.receipeappui.screens
 
+import android.content.Intent
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
@@ -35,6 +36,7 @@ import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -43,7 +45,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.alex.android.receipeappui.R
-import com.alex.android.receipeappui.Screens
+import com.alex.android.receipeappui.SettingActivity
 import com.alex.android.receipeappui.ui.theme.ReceipeAppUITheme
 import com.alex.android.receipeappui.ui.theme.SmallCardBgColor
 import com.alex.android.receipeappui.ui.theme.TopBarColor
@@ -160,6 +162,8 @@ fun DiscoverScreen(navController: NavController) {
                             )
                         }
                     }
+
+                    Spacer(modifier = Modifier.height(20.dp))
                 }
             }
         }
@@ -169,6 +173,7 @@ fun DiscoverScreen(navController: NavController) {
 
 @Composable
 fun RowWithCenteredTextAndIconButton(navController: NavController) {
+    val context = LocalContext.current
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -189,7 +194,8 @@ fun RowWithCenteredTextAndIconButton(navController: NavController) {
 
         IconButton(
             onClick = {
-                navController.navigate(Screens.Settings.route)
+                val intent = Intent(context, SettingActivity::class.java)
+                context.startActivity(intent)
             }, modifier = Modifier
                 .size(48.dp)
                 .padding(8.dp)
@@ -258,7 +264,7 @@ fun RowWithTwoText(firstText: String, secondText: String) {
             text = firstText,
             modifier = Modifier
                 .weight(1f)
-                .padding(start = 8.dp),
+                .padding(start = 16.dp),
             textAlign = TextAlign.Start,
             style = TextStyle(
                 color = Color.Black,

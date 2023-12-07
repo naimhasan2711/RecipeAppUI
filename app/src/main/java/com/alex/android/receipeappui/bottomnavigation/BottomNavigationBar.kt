@@ -22,7 +22,6 @@ import com.alex.android.receipeappui.Screens
 import com.alex.android.receipeappui.screens.DiscoverScreen
 import com.alex.android.receipeappui.screens.MyRecipeScreen
 import com.alex.android.receipeappui.screens.SearchScreen
-import com.alex.android.receipeappui.screens.SettingScreen
 import com.alex.android.receipeappui.ui.theme.TopBarColor
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -83,12 +82,6 @@ fun BottomNavigationBar() {
             }
             composable(Screens.MyRecipe.route) {
                 MyRecipeScreen(
-                    navController
-                )
-            }
-
-            composable(Screens.Settings.route) {
-                SettingScreen(
                     navController
                 )
             }
