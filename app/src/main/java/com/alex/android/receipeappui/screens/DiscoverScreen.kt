@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.aspectRatio
@@ -28,8 +29,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -71,6 +74,58 @@ fun DiscoverScreen(navController: NavController) {
                 }
                 Spacer(modifier = Modifier.height(12.dp))
                 RowWithTwoText(firstText = "Featured Recipes", secondText = "View All")
+                Spacer(modifier = Modifier.height(4.dp))
+
+                LazyRow(
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    items(1) {
+                        CardWithImageAndRows(
+                            painterResource(id = R.drawable.media),
+                            "Chicken Zoodle\nSoup in a Jar",
+                            "10 mins"
+                        )
+
+                        CardWithImageAndRows(
+                            painterResource(id = R.drawable.media3),
+                            "Iced Dried Cherry\nBiscuits",
+                            "25+15 mins"
+                        )
+                        CardWithImageAndRows(
+                            painterResource(id = R.drawable.media2),
+                            "Grilled Pizza\n",
+                            "50 + 12 mins"
+                        )
+                    }
+                }
+
+                Spacer(modifier = Modifier.height(4.dp))
+                RowWithTwoText(firstText = "Trending Recipes", secondText = "View All")
+                Spacer(modifier = Modifier.height(4.dp))
+                LazyRow(
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
+                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    items(1) {
+                        CardWithImageAndRows(
+                            painterResource(id = R.drawable.media5),
+                            "Chicken Zoodle\nSoup in a Jar",
+                            "10 mins"
+                        )
+
+                        CardWithImageAndRows(
+                            painterResource(id = R.drawable.media4),
+                            "Iced Dried Cherry\nBiscuits",
+                            "25+15 mins"
+                        )
+                        CardWithImageAndRows(
+                            painterResource(id = R.drawable.media3),
+                            "Grilled Pizza\n",
+                            "50 + 12 mins"
+                        )
+                    }
+                }
             }
         }
     }
@@ -157,7 +212,7 @@ fun CardWithImageAndTitle(
 }
 
 @Composable
-fun RowWithTwoText(firstText:String, secondText:String) {
+fun RowWithTwoText(firstText: String, secondText: String) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
@@ -188,5 +243,91 @@ fun RowWithTwoText(firstText:String, secondText:String) {
                 fontWeight = FontWeight.Normal
             )
         )
+    }
+}
+
+@Composable
+fun CardWithImageAndRows(painter: Painter, title: String, subtitle: String) {
+    Card(
+        modifier = Modifier
+            .height(220.dp)
+            .width(220.dp)
+            .padding(start = 4.dp, end = 8.dp)
+            .clip(RoundedCornerShape(28.dp))
+            .background(MaterialTheme.colorScheme.primary)
+            .shadow(8.dp, RoundedCornerShape(16.dp))
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+        ) {
+            // Upper half - Drawable Image
+            Image(
+                painter = painter,
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(100.dp),
+                contentScale = ContentScale.Crop
+            )
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // Lower half - Two Rows
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(100.dp)
+                    .padding(start = 8.dp, end = 8.dp, bottom = 8.dp)
+            ) {
+                // First Row with Text
+                Text(
+                    text = title,
+                    style = TextStyle(
+                        color = Color.Black,
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.Normal
+                    ),
+                    modifier = Modifier
+                        .fillMaxWidth()
+                )
+
+                // Second Row with Text and Two Drawable Images
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(top = 4.dp)
+                ) {
+                    Text(
+                        text = subtitle,
+                        style = TextStyle(
+                            color = Color.Black,
+                            fontSize = 18.sp,
+                            fontWeight = FontWeight.Normal
+                        ),
+                        modifier = Modifier
+                            .weight(1f)
+                            .padding(top = 8.dp)
+                    )
+
+                    Image(
+                        painter = painterResource(id = R.drawable.chef_hat_),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .height(40.dp)
+                            .width(40.dp),
+                        contentScale = ContentScale.FillBounds
+                    )
+                    Spacer(modifier = Modifier.width(8.dp))
+                    Image(
+                        painter = painterResource(id = R.drawable.dollar_),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .height(40.dp)
+                            .width(25.dp),
+                        contentScale = ContentScale.FillBounds
+                    )
+                }
+            }
+        }
     }
 }
