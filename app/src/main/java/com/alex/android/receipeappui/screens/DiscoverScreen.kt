@@ -6,10 +6,8 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -39,6 +37,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -47,9 +47,7 @@ import androidx.navigation.NavController
 import com.alex.android.receipeappui.R
 import com.alex.android.receipeappui.SettingActivity
 import com.alex.android.receipeappui.ui.theme.ReceipeAppUITheme
-import com.alex.android.receipeappui.ui.theme.SmallCardBgColor
-import com.alex.android.receipeappui.ui.theme.TopBarColor
-import com.alex.android.receipeappui.ui.theme.ViewAllTextColor
+import com.alex.android.receipeappui.ui.theme.roboto
 
 
 @Composable
@@ -69,101 +67,66 @@ fun DiscoverScreen(navController: NavController) {
                         .fillMaxWidth()
                         .verticalScroll(rememberScrollState()),
                     horizontalAlignment = Alignment.CenterHorizontally
-                ){
+                ) {
                     Spacer(modifier = Modifier.height(12.dp))
-                    LazyRow(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        items(1) {
+                    LazyRow(
+                        modifier = Modifier.padding(start = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    ) {
+                        items(5) {
                             CardWithImageAndTitle(
                                 "American", painterResource(id = R.drawable.hamburger_)
                             )
-                            CardWithImageAndTitle("Spanish", painterResource(id = R.drawable.food_))
-                            CardWithImageAndTitle("Italian", painterResource(id = R.drawable.pizza_))
-                            CardWithImageAndTitle("Chinese", painterResource(id = R.drawable.sushi_))
-                            CardWithImageAndTitle("Spanish", painterResource(id = R.drawable.food_))
                         }
                     }
-                    Spacer(modifier = Modifier.height(12.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
                     RowWithTwoText(firstText = "Featured Recipes", secondText = "View All")
-                    Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
 
                     LazyRow(
-                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        modifier = Modifier.padding(start = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        items(1) {
-                            CardWithImageAndRows(
-                                painterResource(id = R.drawable.media),
-                                "Chicken Zoodle\nSoup in a Jar",
-                                "10 mins"
-                            )
-
+                        items(3) {
                             CardWithImageAndRows(
                                 painterResource(id = R.drawable.media3),
                                 "Iced Dried Cherry\nBiscuits",
                                 "25+15 mins"
                             )
-                            CardWithImageAndRows(
-                                painterResource(id = R.drawable.media2),
-                                "Grilled Pizza\n",
-                                "50 + 12 mins"
-                            )
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
                     RowWithTwoText(firstText = "Trending Recipes", secondText = "View All")
-                    Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
                     LazyRow(
-                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        modifier = Modifier.padding(start = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        items(1) {
+                        items(3) {
                             CardWithImageAndRows(
                                 painterResource(id = R.drawable.media5),
                                 "Chicken Zoodle\nSoup in a Jar",
                                 "10 mins"
                             )
-
-                            CardWithImageAndRows(
-                                painterResource(id = R.drawable.media4),
-                                "Iced Dried Cherry\nBiscuits",
-                                "25+15 mins"
-                            )
-                            CardWithImageAndRows(
-                                painterResource(id = R.drawable.media3),
-                                "Grilled Pizza\n",
-                                "50 + 12 mins"
-                            )
                         }
                     }
-                    Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
                     RowWithTwoText(firstText = "Easy Recipes", secondText = "View All")
-                    Spacer(modifier = Modifier.height(4.dp))
+                    Spacer(modifier = Modifier.height(12.dp))
                     LazyRow(
-                        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
+                        modifier = Modifier.padding(start = 16.dp),
+                        horizontalArrangement = Arrangement.spacedBy(16.dp)
                     ) {
-                        items(1) {
+                        items(5) {
                             CardWithImageAndRows(
                                 painterResource(id = R.drawable.media5),
                                 "Iced Dried Cherry\nBiscuits",
                                 "10 mins"
                             )
-
-                            CardWithImageAndRows(
-                                painterResource(id = R.drawable.media2),
-                                "Pork tenderion\nHoney mustard",
-                                "45 + 60 mins"
-                            )
-                            CardWithImageAndRows(
-                                painterResource(id = R.drawable.media),
-                                "Smoky sausage &\nsquash traybake",
-                                "50 + 12 mins"
-                            )
                         }
                     }
-
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.height(30.dp))
                 }
             }
         }
@@ -177,10 +140,10 @@ fun RowWithCenteredTextAndIconButton(navController: NavController) {
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(70.dp)
-            .border(2.dp, color = Color.Gray, shape = RoundedCornerShape(0.dp))
-            .padding(2.dp)
-            .background(TopBarColor),
+            .height(70.5.dp)
+            .padding(start = 4.dp, top = 1.dp, end = 4.dp, bottom = 0.dp)
+            .border(width = 1.dp, color = Color(0xFF000000))
+            .background(color = Color(0xFFFEF7FF)),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
@@ -189,7 +152,12 @@ fun RowWithCenteredTextAndIconButton(navController: NavController) {
             modifier = Modifier
                 .weight(1f)
                 .wrapContentWidth(Alignment.CenterHorizontally),
-            style = TextStyle(color = Color.Black, fontSize = 24.sp, fontWeight = FontWeight.Bold)
+            style = TextStyle(
+                color = Color.Black,
+                fontSize = 24.sp,
+                fontWeight = FontWeight.Bold,
+                fontFamily = roboto
+            )
         )
 
         IconButton(
@@ -213,13 +181,13 @@ fun CardWithImageAndTitle(
 ) {
     Card(
         modifier = Modifier
-            .height(120.dp)
-            .width(120.dp)
-            .padding(10.dp)
+            .height(108.dp)
+            .width(102.dp)
+            .padding(1.dp)
             .clip(RoundedCornerShape(40.dp))
-            .background(MaterialTheme.colorScheme.onBackground),
+            .background(color = Color(0xFFEABFBF)),
         colors = CardDefaults.cardColors(
-            containerColor = SmallCardBgColor, //Card background color
+            containerColor = Color(0xFFEABFBF), //Card background color
             contentColor = Color.Black  //Card content color,e.g.text
         )
     ) {
@@ -234,18 +202,23 @@ fun CardWithImageAndTitle(
                 painter = painter,
                 contentDescription = null,
                 modifier = Modifier
-                    .height(30.dp)
-                    .width(30.dp)
-                    .aspectRatio(1.2f),
+                    .height(36.dp)
+                    .width(36.dp),
                 alignment = Alignment.Center
-
             )
 
             Spacer(modifier = Modifier.height(12.dp))
 
             Text(
                 text = title,
-                style = MaterialTheme.typography.bodyMedium,
+                style = TextStyle(
+                    fontSize = 14.sp,
+                    lineHeight = 24.sp,
+                    fontFamily = FontFamily(Font(R.font.roboto_regular)),
+                    fontWeight = FontWeight(400),
+                    color = Color(0xFF000000),
+                    textAlign = TextAlign.Center,
+                ),
                 modifier = Modifier.align(Alignment.CenterHorizontally)
             )
         }
@@ -267,9 +240,11 @@ fun RowWithTwoText(firstText: String, secondText: String) {
                 .padding(start = 16.dp),
             textAlign = TextAlign.Start,
             style = TextStyle(
-                color = Color.Black,
                 fontSize = 22.sp,
-                fontWeight = FontWeight.Normal
+                lineHeight = 24.sp,
+                fontFamily = FontFamily(Font(R.font.inter_medium)),
+                fontWeight = FontWeight(400),
+                color = Color(0xFF000000),
             )
         )
         Text(
@@ -279,9 +254,13 @@ fun RowWithTwoText(firstText: String, secondText: String) {
                 .padding(end = 16.dp),
             textAlign = TextAlign.End,
             style = TextStyle(
-                color = ViewAllTextColor,
                 fontSize = 14.sp,
-                fontWeight = FontWeight.Normal
+                lineHeight = 20.sp,
+                fontFamily = FontFamily(Font(R.font.roboto_regular)),
+                fontWeight = FontWeight(500),
+                color = Color(0xFF6750A4),
+                textAlign = TextAlign.Center,
+                letterSpacing = 0.1.sp,
             )
         )
     }
@@ -291,12 +270,16 @@ fun RowWithTwoText(firstText: String, secondText: String) {
 fun CardWithImageAndRows(painter: Painter, title: String, subtitle: String) {
     Card(
         modifier = Modifier
-            .height(200.dp)
-            .width(200.dp)
-            .padding(start = 4.dp, end = 8.dp)
+            .shadow(elevation = 4.dp, spotColor = Color(0xFFFAD5FF), ambientColor = Color(0xFFFAD5FF),shape = RoundedCornerShape(size = 28.dp))
+            .background(color = Color(0xFFFFFFFF))
             .clip(RoundedCornerShape(28.dp))
-            .background(MaterialTheme.colorScheme.primary)
-            .shadow(8.dp, RoundedCornerShape(16.dp))
+            .height(240.dp)
+            .width(240.dp)
+        ,
+        colors = CardDefaults.cardColors(
+            containerColor = Color(0xFFFFFFFF), //Card background color
+            contentColor = Color.Black  //Card content color,e.g.text
+        )
     ) {
         Column(
             modifier = Modifier
@@ -307,26 +290,28 @@ fun CardWithImageAndRows(painter: Painter, title: String, subtitle: String) {
                 painter = painter,
                 contentDescription = null,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .height(90.dp),
-                contentScale = ContentScale.Crop
+                    .width(240.dp)
+                    .height(105.dp),
+                contentScale = ContentScale.FillBounds
             )
             Spacer(modifier = Modifier.height(8.dp))
-
             // Lower half - Two Rows
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(100.dp)
+                    .height(135.dp)
                     .padding(start = 8.dp, end = 8.dp, bottom = 8.dp)
             ) {
                 // First Row with Text
                 Text(
                     text = title,
                     style = TextStyle(
-                        color = Color.Black,
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Normal
+                        fontSize = 24.sp,
+                        lineHeight = 24.sp,
+                        fontFamily = FontFamily(Font(R.font.roboto_regular)),
+                        fontWeight = FontWeight(400),
+                        color = Color(0xFF1D1B20),
+                        letterSpacing = 0.5.sp,
                     ),
                     modifier = Modifier
                         .fillMaxWidth()
@@ -341,9 +326,12 @@ fun CardWithImageAndRows(painter: Painter, title: String, subtitle: String) {
                     Text(
                         text = subtitle,
                         style = TextStyle(
-                            color = Color.Black,
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Normal
+                            fontSize = 21.sp,
+                            lineHeight = 20.sp,
+                            fontFamily = FontFamily(Font(R.font.roboto_thin)),
+                            fontWeight = FontWeight(400),
+                            color = Color(0xFF49454F),
+                            letterSpacing = 0.25.sp,
                         ),
                         modifier = Modifier
                             .weight(1f)
@@ -354,8 +342,8 @@ fun CardWithImageAndRows(painter: Painter, title: String, subtitle: String) {
                         painter = painterResource(id = R.drawable.chef_hat_),
                         contentDescription = null,
                         modifier = Modifier
-                            .height(40.dp)
-                            .width(40.dp),
+                            .height(36.dp)
+                            .width(36.dp),
                         contentScale = ContentScale.FillBounds
                     )
                     Spacer(modifier = Modifier.width(8.dp))
