@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -38,6 +39,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.alex.android.receipeappui.MainActivity
 import com.alex.android.receipeappui.R
+import com.alex.android.receipeappui.components.FilterChipGroup
 import com.alex.android.receipeappui.ui.theme.ReceipeAppUITheme
 import com.alex.android.receipeappui.ui.theme.roboto
 
@@ -55,6 +57,77 @@ fun SettingsScreen() {
                 RowWithCenteredTextAndIconButtonSettings()
                 Spacer(modifier = Modifier.height(12.dp))
                 EditProfileSection()
+                Spacer(modifier = Modifier.height(12.dp))
+                Text(
+                    text = "Personal Preference",
+                    modifier = Modifier
+                        .padding(start = 12.dp)
+                        .wrapContentWidth(Alignment.CenterHorizontally),
+                    style = TextStyle(
+                        fontSize = 28.sp,
+                        lineHeight = 24.sp,
+                        fontFamily = FontFamily(Font(R.font.inter_regular)),
+                        fontWeight = FontWeight(500),
+                        color = Color(0xFF000000),
+
+                        )
+                )
+                Spacer(modifier = Modifier.height(60.dp))
+                Text(
+                    text = "Dietary Requirements",
+                    modifier = Modifier
+                        .padding(start = 12.dp)
+                        .wrapContentWidth(Alignment.CenterHorizontally),
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        lineHeight = 16.sp,
+                        fontFamily = FontFamily(Font(R.font.roboto_regular)),
+                        fontWeight = FontWeight(400),
+                        color = Color(0xFF000000),
+
+                        )
+                )
+                FilterChipGroup(items = listOf("Vegetarian", "Vegan", "Diabetic", "Random"))
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "Allergies",
+                    modifier = Modifier
+                        .padding(start = 12.dp)
+                        .wrapContentWidth(Alignment.CenterHorizontally),
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        lineHeight = 16.sp,
+                        fontFamily = FontFamily(Font(R.font.roboto_regular)),
+                        fontWeight = FontWeight(400),
+                        color = Color(0xFF000000),
+                        )
+                )
+                FilterChipGroup(items = listOf("Peanut", "Shellfish", "Diary", "Random"))
+                Spacer(modifier = Modifier.height(16.dp))
+                Text(
+                    text = "Favorite Cuisine",
+                    modifier = Modifier
+                        .padding(start = 12.dp)
+                        .wrapContentWidth(Alignment.CenterHorizontally),
+                    style = TextStyle(
+                        fontSize = 24.sp,
+                        lineHeight = 16.sp,
+                        fontFamily = FontFamily(Font(R.font.roboto_regular)),
+                        fontWeight = FontWeight(400),
+                        color = Color(0xFF000000),
+                    )
+                )
+                Spacer(modifier = Modifier.height(16.dp))
+                LazyRow(
+                    modifier = Modifier.padding(start = 16.dp),
+                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                ) {
+                    items(5) {
+                        CardWithImageAndTitle(
+                            "American", painterResource(id = R.drawable.hamburger_)
+                        )
+                    }
+                }
             }
         }
     }
@@ -107,7 +180,7 @@ fun EditProfileSection(
             .fillMaxWidth()
             .height(105.dp)
             .padding(horizontal = 24.dp)
-            .background(color = Color(0xFFFEF7FF), shape =RoundedCornerShape(30.dp) )
+            .background(color = Color(0xFFFEF7FF), shape = RoundedCornerShape(30.dp))
             .clip(RoundedCornerShape(30.dp))
             .border(width = 1.dp, color = Color(0xFFCAC4D0), shape = RoundedCornerShape(30.dp)),
         verticalAlignment = Alignment.CenterVertically,
