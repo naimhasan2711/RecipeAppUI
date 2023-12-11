@@ -16,8 +16,11 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Info
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -67,13 +70,32 @@ fun MyRecipeScreen(navController: NavController) {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .verticalScroll(rememberScrollState()),
-                    horizontalAlignment = Alignment.CenterHorizontally
+                        .verticalScroll(rememberScrollState())
                 ) {
                     Spacer(modifier = Modifier.height(16.dp))
                     RowWithTwoText(firstText = "Latest Recipes", secondText = "View All")
                     Spacer(modifier = Modifier.height(12.dp))
                     CardWithImageAndRowsMyRecipes(painterResource(id = R.drawable.card_image))
+                    Spacer(modifier = Modifier.height(16.dp))
+                    Text(
+                        modifier = Modifier
+                            .width(216.dp)
+                            .height(31.dp)
+                            .padding(start = 16.dp),
+                        text = "Your List",
+                        style = TextStyle(
+                            fontSize = 24.sp,
+                            lineHeight = 24.sp,
+                            fontFamily = FontFamily(Font(R.font.inter_regular)),
+                            fontWeight = FontWeight(400),
+                            color = Color(0xFF000000)
+                        )
+                    )
+                    CustomRow()
+                    CustomRow()
+                    CustomRow()
+                    CustomRow()
+                    CustomRow()
                 }
             }
         }
@@ -123,6 +145,7 @@ fun RowWithCenteredTextAndIconButtonMyRecipes() {
 fun CardWithImageAndRowsMyRecipes(painter: Painter) {
     Card(
         modifier = Modifier
+            .padding(start = 16.dp)
             .shadow(
                 elevation = 4.dp,
                 spotColor = Color(0xFFFAD5FF),
@@ -228,7 +251,7 @@ fun CardWithImageAndRowsMyRecipes(painter: Painter) {
                     Button(
                         onClick = { },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor =  Color(0xFF6750A4)
+                            containerColor = Color(0xFF6750A4)
                         )
                     ) {
                         Text(text = "Cook It!")
@@ -264,5 +287,70 @@ fun ButtonWithIconSample() {
                 letterSpacing = 0.1.sp,
             )
         )
+    }
+}
+
+
+@Composable
+fun CustomRow() {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .height(93.dp)
+            .background(color = Color(0xFFFEF7FF)),
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.image_thumb),
+            contentDescription = null,
+            modifier = Modifier
+                .size(70.dp)
+                .padding(start = 8.dp)
+                .background(MaterialTheme.colorScheme.primary)
+        )
+        // Spacer for separation
+        Spacer(modifier = Modifier.width(16.dp))
+        // Column with two Text elements
+        Column {
+            Text(
+                text = "Added 3 days ago",
+                style = TextStyle(
+                    fontSize = 12.sp,
+                    lineHeight = 16.sp,
+                    fontFamily = FontFamily(Font(R.font.roboto_thin)),
+                    fontWeight = FontWeight(500),
+                    color = Color(0xFF49454F),
+                    letterSpacing = 0.5.sp,
+                )
+            )
+            Text(
+                text = "Grilled Pizza",
+                style = TextStyle(
+                    fontSize = 16.sp,
+                    lineHeight = 24.sp,
+                    fontFamily = FontFamily(Font(R.font.roboto_regular)),
+                    fontWeight = FontWeight(400),
+                    color = Color(0xFF1D1B20),
+                    letterSpacing = 0.5.sp,
+                )
+            )
+        }
+
+        // Spacer for separation
+        Spacer(modifier = Modifier.width(16.dp))
+
+        // IconButton
+        IconButton(
+            onClick = {
+
+            }, modifier = Modifier
+                .size(48.dp)
+                .padding(8.dp),
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.cross_icon), contentDescription = "Send"
+            )
+        }
     }
 }
