@@ -92,10 +92,15 @@ fun MyRecipeScreen(navController: NavController) {
                         )
                     )
                     CustomRow()
+                    Spacer(modifier = Modifier.height(1.dp).background(Color.Gray))
                     CustomRow()
+                    Spacer(modifier = Modifier.height(1.dp).background(Color.Gray))
                     CustomRow()
+                    Spacer(modifier = Modifier.height(1.dp).background(Color.Gray))
                     CustomRow()
+                    Spacer(modifier = Modifier.height(1.dp).background(Color.Gray))
                     CustomRow()
+                    Spacer(modifier = Modifier.height(160.dp).background(Color.Gray))
                 }
             }
         }
