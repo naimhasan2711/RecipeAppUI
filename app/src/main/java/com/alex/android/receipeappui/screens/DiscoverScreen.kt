@@ -142,7 +142,6 @@ fun RowWithCenteredTextAndIconButton(navController: NavController) {
             .fillMaxWidth()
             .height(70.5.dp)
             .padding(start = 4.dp, top = 1.dp, end = 4.dp, bottom = 0.dp)
-            .border(width = 1.dp, color = Color(0xFF000000))
             .background(color = Color(0xFFFEF7FF)),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
